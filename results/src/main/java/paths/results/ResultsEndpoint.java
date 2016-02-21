@@ -3,7 +3,6 @@ package paths.results;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.eclipse.jetty.websocket.api.Session;
-import paths.db.Results;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,13 +17,9 @@ public class ResultsEndpoint {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     public static final List<Session> sessions = new ArrayList<>();
-    public static Results results = Results.createDefault();
 
     public static void main(String[] args) throws InterruptedException {
-        Events events = new Events(TOPIC);
-
-        webSocket("/results", ResultsWebsocketHandler.class);
-
+        webSocket("/all", ResultsWebsocketHandler.class);
         init();
     }
 
