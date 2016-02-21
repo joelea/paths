@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  db:
+    image: postgres
+
+  results:
+    build: ./results
+    ports:
+      - "4567:4567"
+
+  entry:
+    build: ./nginx
+    ports:
+      - "443:443"
+      - "80:80"
+
+  app:
+    build: ./web-app
+    volumes:
+      - ./web-app/dist:/usr/html

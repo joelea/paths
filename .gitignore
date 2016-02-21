@@ -1,0 +1,8 @@
+.idea
+*.ipr
+*.iws
+*.iml
+out
+server/build
+build/
+screenshots
