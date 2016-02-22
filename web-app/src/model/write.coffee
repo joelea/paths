@@ -4,5 +4,5 @@ module.exports = (url, body) ->
   $.ajax(
     type: "POST"
     url: url
-    data: body
+    data: JSON.stringify(body)
   )

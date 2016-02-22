@@ -5,7 +5,6 @@ module.exports =
       .waitForElementVisible('.ete-add-results')
       .setValue('.ete-set-pupil', 'Joe')
       .setValue('.ete-set-score', '90')
-      .waitForElementVisible('.ete-result')
       .click('.ete-add-todo')
 
     browser.expect.element('.ete-result .ete-pupil').text
