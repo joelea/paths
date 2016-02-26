@@ -1,0 +1,43 @@
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '1.2.2'
+    id 'idea'
+    id 'eclipse'
+}
+apply plugin: 'org.inferred.processors'
+
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+mainClassName = 'paths.results.ResultsEndpoint'
+
+shadowJar {
+    manifest {
+        attributes 'Main-Class': 'paths.results.ResultsEndpoint'
+    }
+}
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.sparkjava:spark-core:2.3'
+    compile 'org.jdbi:jdbi:2.71'
+    compile 'org.postgresql:postgresql:9.4.1207'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.7.1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.7.1'
+    compile 'com.google.guava:guava:19.0'
+
+    processor 'org.immutables:value:2.0.21'
+}
+
